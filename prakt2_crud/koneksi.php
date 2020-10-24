@@ -1,7 +1,7 @@
 <?php
-    $host="sql300.epizy.com";//"localhost";
-    $user="epiz_26898513";//"root";////// //
-    $pwd="ysgg312PmmabjZb"; //"";
-    $dbname="epiz_26898513_dbMahasiswa_1";//"pabw";
+    $host="localhost";//"sql300.epizy.com";//
+    $user="root";//"epiz_26898513";//////// //
+    $pwd="";//"ysgg312PmmabjZb"; //"";
+    $dbname="pabw";//"epiz_26898513_dbMahasiswa_1";//;
     $kon=mysqli_connect($host,$user,$pwd,$dbname);
 ?>

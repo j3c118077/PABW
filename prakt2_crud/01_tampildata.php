@@ -20,29 +20,33 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <a href="../" role="button">Kembali</a>
-<h2>Data Mahasiswa</h2>
+    
 
+    <div class="container" align="center">
+        <h2>Data Mahasiswa</h2>
+        <form action="02_tambahdata.php">
+            <a class="btn btn-danger" href="../" role="button">Kembali</a>
+            <input type="submit" class="btn btn-primary" value="Tambah Data Baru">  
+        </form>
+            <br>
+    </div>    
 
-<form action="02_tambahdata.php">
-    <input type="submit" value="Tambah Data Baru"> 
-</form>
-<br>
+    <div class="container" align="center">
+    <?php
+        include "koneksi.php";
+        $r=mysqli_query($kon,"SELECT * FROM mahasiswa");
+        $i=1;
+        while($brs=mysqli_fetch_assoc($r)) {
+            //print_r($brs);
+            echo "<form action=\"03_aksi.php\">";
+            echo $i++.". ". $brs["nama"];
+            echo " &nbsp;&nbsp;&nbsp;<input type=\"submit\" name=\"aksi\" value=\"Edit\">";
+            echo " &nbsp;&nbsp;&nbsp;<input type=\"submit\" name=\"aksi\" value=\"Delete\">";
+            echo "<p>";
+            echo "<input type=\"hidden\" name=\"id\" value=\"".$brs["id"]."\">";
+            echo "<input type=\"hidden\" name=\"nm\" value=\"".$brs["nama"]."\">";
+            echo "</form>";
+        }
+    ?>
+    </div>
 </html>
-
-<?php
-    include "koneksi.php";
-    $r=mysqli_query($kon,"SELECT * FROM mahasiswa");
-    $i=1;
-    while($brs=mysqli_fetch_assoc($r)) {
-        //print_r($brs);
-        echo "<form action=\"03_aksi.php\">";
-        echo $i++.". ". $brs["nama"];
-        echo " &nbsp;&nbsp;&nbsp;<input type=\"submit\" name=\"aksi\" value=\"Edit\">";
-        echo " &nbsp;&nbsp;&nbsp;<input type=\"submit\" name=\"aksi\" value=\"Delete\">";
-        echo "<p>";
-        echo "<input type=\"hidden\" name=\"id\" value=\"".$brs["id"]."\">";
-        echo "<input type=\"hidden\" name=\"nm\" value=\"".$brs["nama"]."\">";
-        echo "</form>";
-    }
-?>
